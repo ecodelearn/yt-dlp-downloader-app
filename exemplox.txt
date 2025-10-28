@@ -1,0 +1,41 @@
+It downloads to the directory where you ran the youtube-dl command:
+
+$ cd /[PATH]/     (para não encher a /home)
+
+$ yt-dlp [URL]
+
+Converter audio e video para usar no legen para transcricao
+
+$ yt-dlp --yes-playlist -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best' [URL]
+
+Para cortar nomes extensos demais (que não são aceitos) -- por exemplo, uma postagem de rede social com texto muito longo:
+
+$ yt-dlp --trim-filenames 20 [URL]
+
+Com legendas "enviadas pelo proprietário":
+
+yt-dlp --write-srt --sub-lang en [URL]
+
+Com legendas "geradas automaticamente":
+
+yt-dlp --write-auto-sub [URL]
+
+Ignorar nome longo demais ou inadequado:
+
+$ yt-dlp --id URL
+
+Extrair áudio:
+
+$ yt-dlp -x --audio-format mp3 URL
+
+Playlist --> clicar em "View full playlist" e copiar o link:
+
+$ yt-dlp --yes-playlist -x --audio-format mp3 [URL]
+
+Para escolher itens da Playlist, usar vírgula para separar e hífen para indicar uma parte da lista:
+
+$ yt-dlp --playlist-items 1,3-15 -x --audio-format mp3 URL
+
+Só listar
+
+$ yt-dlp --flat-playlist -x --audio-format mp3 [URL]
