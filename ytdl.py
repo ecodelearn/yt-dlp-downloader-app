@@ -42,19 +42,19 @@ class YTDLPDownloader:
             },
             "with_subtitles": {
                 "name": "Vídeo com Legendas (EN)",
-                "args": ["-f", "bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b", "--write-srt", "--sub-lang", "en", "--merge-output-format", "mp4", "--remux-video", "mp4"]
+                "args": ["-f", "bv*+ba/b", "--write-srt", "--sub-lang", "en", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             },
             "auto_subtitles": {
                 "name": "Vídeo com Legendas Auto",
-                "args": ["-f", "bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b", "--write-auto-sub", "--merge-output-format", "mp4", "--remux-video", "mp4"]
+                "args": ["-f", "bv*+ba/b", "--write-auto-sub", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             },
             "playlist_audio": {
                 "name": "Playlist Completa (Áudio MP3)",
-                "args": ["--yes-playlist", "-x", "--audio-format", "mp3"]
+                "args": ["--yes-playlist", "-i", "-x", "--audio-format", "mp3"]
             },
             "playlist_video": {
                 "name": "Playlist Completa (Vídeo MP4)",
-                "args": ["--yes-playlist", "-f", "bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b", "--merge-output-format", "mp4", "--remux-video", "mp4"]
+                "args": ["--yes-playlist", "-i", "-f", "bv*+ba/b", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             }
         }
 

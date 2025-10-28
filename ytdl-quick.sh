@@ -94,23 +94,26 @@ case "$CHOICE" in
         /usr/local/bin/yt-dlp -x --audio-format mp3 "$URL"
         ;;
     "Vídeo com Legendas")
-        /usr/local/bin/yt-dlp -f 'bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b' \
+        /usr/local/bin/yt-dlp -f 'bv*+ba/b' \
             --merge-output-format mp4 \
-            --remux-video mp4 \
+            --recode-video mp4 \
             --ffmpeg-location /usr/local/bin/ffmpeg \
+            --cookies-from-browser safari \
             --write-srt --sub-lang en \
             -o "%(title)s [%(id)s].%(ext)s" \
             "$URL"
         ;;
     "Playlist Áudio")
-        /usr/local/bin/yt-dlp --yes-playlist -x --audio-format mp3 "$URL"
+        /usr/local/bin/yt-dlp --yes-playlist -i -x --audio-format mp3 "$URL"
         ;;
     "Playlist Vídeo")
-        /usr/local/bin/yt-dlp --yes-playlist \
-            -f 'bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b' \
+        /usr/local/bin/yt-dlp --yes-playlist -i \
+            -f 'bv*+ba/b' \
             --merge-output-format mp4 \
-            --remux-video mp4 \
+            --recode-video mp4 \
+            --cookies-from-browser safari \
             --ffmpeg-location /usr/local/bin/ffmpeg \
+            -o "%(title)s [%(id)s].%(ext)s" \
             "$URL"
         ;;
 esac
