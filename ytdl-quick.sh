@@ -38,11 +38,12 @@ osascript -e "display notification \"Iniciando download...\" with title \"YT-DLP
 # Executa download baseado na escolha (usa yt-dlp do sistema)
 case "$CHOICE" in
     "Vídeo MP4 (Melhor)")
-        # Baixa com opções de merge explícitas
-        /usr/local/bin/yt-dlp -f 'bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b' \
+        # Baixa com opções de merge explícitas - formato universal
+        /usr/local/bin/yt-dlp -f 'bv*+ba/b' \
             --merge-output-format mp4 \
-            --remux-video mp4 \
+            --recode-video mp4 \
             --ffmpeg-location /usr/local/bin/ffmpeg \
+            --cookies-from-browser safari \
             -o "%(title)s [%(id)s].%(ext)s" \
             "$URL"
 
@@ -72,18 +73,20 @@ case "$CHOICE" in
         fi
         ;;
     "Vídeo 720p (Menor)")
-        /usr/local/bin/yt-dlp -f 'bv*[height<=720][ext=mp4]+ba[ext=m4a]/bv*[height<=720]+ba' \
+        /usr/local/bin/yt-dlp -f 'bv*[height<=720]+ba/b[height<=720]' \
             --merge-output-format mp4 \
             --recode-video mp4 \
             --ffmpeg-location /usr/local/bin/ffmpeg \
+            --cookies-from-browser safari \
             -o "%(title)s [%(id)s].%(ext)s" \
             "$URL"
         ;;
     "Vídeo 480p (Muito Menor)")
-        /usr/local/bin/yt-dlp -f 'bv*[height<=480][ext=mp4]+ba[ext=m4a]/bv*[height<=480]+ba' \
+        /usr/local/bin/yt-dlp -f 'bv*[height<=480]+ba/b[height<=480]' \
             --merge-output-format mp4 \
             --recode-video mp4 \
             --ffmpeg-location /usr/local/bin/ffmpeg \
+            --cookies-from-browser safari \
             -o "%(title)s [%(id)s].%(ext)s" \
             "$URL"
         ;;

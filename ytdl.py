@@ -26,15 +26,15 @@ class YTDLPDownloader:
         self.presets = {
             "video_best": {
                 "name": "Vídeo (Melhor Qualidade MP4)",
-                "args": ["-f", "bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b", "--merge-output-format", "mp4", "--remux-video", "mp4"]
+                "args": ["-f", "bv*+ba/b", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             },
             "video_compact": {
                 "name": "Vídeo Compacto (Arquivo Menor - 720p)",
-                "args": ["-f", "bv*[height<=720][ext=mp4]+ba[ext=m4a]/bv*[height<=720]+ba", "--merge-output-format", "mp4", "--recode-video", "mp4"]
+                "args": ["-f", "bv*[height<=720]+ba/b[height<=720]", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             },
             "video_small": {
                 "name": "Vídeo Pequeno (Arquivo Muito Menor - 480p)",
-                "args": ["-f", "bv*[height<=480][ext=mp4]+ba[ext=m4a]/bv*[height<=480]+ba", "--merge-output-format", "mp4", "--recode-video", "mp4"]
+                "args": ["-f", "bv*[height<=480]+ba/b[height<=480]", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
             },
             "audio_mp3": {
                 "name": "Áudio MP3",
