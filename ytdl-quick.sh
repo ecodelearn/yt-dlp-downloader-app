@@ -91,7 +91,10 @@ case "$CHOICE" in
             "$URL"
         ;;
     "Áudio MP3")
-        /usr/local/bin/yt-dlp -x --audio-format mp3 "$URL"
+        /usr/local/bin/yt-dlp -x --audio-format mp3 \
+            --ffmpeg-location /usr/local/bin/ffmpeg \
+            -o "%(title)s [%(id)s].%(ext)s" \
+            "$URL"
         ;;
     "Vídeo com Legendas")
         /usr/local/bin/yt-dlp -f 'bv*+ba/b' \
@@ -104,7 +107,10 @@ case "$CHOICE" in
             "$URL"
         ;;
     "Playlist Áudio")
-        /usr/local/bin/yt-dlp --yes-playlist -i -x --audio-format mp3 "$URL"
+        /usr/local/bin/yt-dlp --yes-playlist -i -x --audio-format mp3 \
+            --ffmpeg-location /usr/local/bin/ffmpeg \
+            -o "%(title)s [%(id)s].%(ext)s" \
+            "$URL"
         ;;
     "Playlist Vídeo")
         /usr/local/bin/yt-dlp --yes-playlist -i \

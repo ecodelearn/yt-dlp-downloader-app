@@ -38,7 +38,7 @@ class YTDLPDownloader:
             },
             "audio_mp3": {
                 "name": "Áudio MP3",
-                "args": ["-x", "--audio-format", "mp3"]
+                "args": ["-x", "--audio-format", "mp3", "--ffmpeg-location", "/usr/local/bin/ffmpeg"]
             },
             "with_subtitles": {
                 "name": "Vídeo com Legendas (EN)",
@@ -50,11 +50,11 @@ class YTDLPDownloader:
             },
             "playlist_audio": {
                 "name": "Playlist Completa (Áudio MP3)",
-                "args": ["--yes-playlist", "-i", "-x", "--audio-format", "mp3"]
+                "args": ["--yes-playlist", "-i", "-x", "--audio-format", "mp3", "--ffmpeg-location", "/usr/local/bin/ffmpeg"]
             },
             "playlist_video": {
                 "name": "Playlist Completa (Vídeo MP4)",
-                "args": ["--yes-playlist", "-i", "-f", "bv*+ba/b", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari"]
+                "args": ["--yes-playlist", "-i", "-f", "bv*+ba/b", "--merge-output-format", "mp4", "--recode-video", "mp4", "--cookies-from-browser", "safari", "--ffmpeg-location", "/usr/local/bin/ffmpeg"]
             }
         }
 
@@ -261,7 +261,7 @@ class YTDLPDownloader:
         if fmt_answer['format'] == 'audio':
             extra_args.extend(['-x', '--audio-format', 'mp3'])
         else:
-            extra_args.extend(['-f', 'bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b', '--merge-output-format', 'mp4', '--remux-video', 'mp4'])
+            extra_args.extend(['-f', 'bv*+ba/b', '--merge-output-format', 'mp4', '--recode-video', 'mp4', '--cookies-from-browser', 'safari', '--ffmpeg-location', '/usr/local/bin/ffmpeg'])
 
         self.download(url, extra_args=extra_args)
 
