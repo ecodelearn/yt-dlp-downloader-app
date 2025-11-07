@@ -1,33 +1,39 @@
-# YT-DLP Downloader
+# YT-DLP Downloader para macOS
 
-Sistema completo para download de vídeos do YouTube com interface gráfica para macOS, incluindo app para o Dock e CLI interativo.
+Sistema completo de download de vídeos do YouTube e outros sites com múltiplas interfaces para macOS.
 
-## Características
+[![macOS](https://img.shields.io/badge/macOS-10.15+-blue.svg)](https://www.apple.com/macos/)
+[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
+[![yt-dlp](https://img.shields.io/badge/yt--dlp-latest-red.svg)](https://github.com/yt-dlp/yt-dlp)
 
-- **App para Dock/Desktop**: Clique e baixe vídeos direto da área de trabalho
-- **CLI Interativo**: Interface de linha de comando com menus intuitivos
-- **Quick Actions**: Atalhos no menu de contexto do macOS
-- **Múltiplos Formatos**: Vídeo em várias qualidades, áudio MP3, playlists
-- **Compatibilidade Total**: Vídeos em MP4 (H.264 + AAC) compatíveis com QuickTime e WhatsApp
-- **Download Inteligente**: Merge automático de vídeo e áudio
-- **Legendas**: Suporte para legendas automáticas e enviadas
+## ✨ Características
 
-## Formatos Disponíveis
+- **🖥️ App Desktop Moderno**: Interface gráfica completa com Tkinter
+- **🎯 App para Dock**: Diálogo rápido para downloads instantâneos
+- **💻 CLI Interativo**: Interface de linha de comando com menus intuitivos
+- **⚡ Quick Actions**: Atalhos no menu de contexto do macOS
+- **🎬 Múltiplos Formatos**: Vídeo em várias qualidades, áudio MP3, playlists
+- **✅ Compatibilidade Total**: Vídeos em MP4 (H.264 + AAC) compatíveis com QuickTime e WhatsApp
+- **🔧 Download Inteligente**: Merge automático de vídeo e áudio para melhor qualidade
+- **📝 Legendas**: Suporte para legendas automáticas e enviadas
+- **🌐 Multi-Site**: YouTube, Vimeo e centenas de outros sites suportados
+
+## 📦 Formatos Disponíveis
 
 ### Vídeo
-- **Vídeo MP4 (Melhor)**: Máxima qualidade disponível em MP4 (H.264)
+- **Vídeo MP4 (Melhor)**: Máxima qualidade disponível em MP4 (H.264 + AAC)
 - **Vídeo 720p (Menor)**: Resolução HD, arquivos ~30-40% menores
 - **Vídeo 480p (Muito Menor)**: Resolução SD, arquivos ~60-70% menores
 - **Vídeo com Legendas**: Melhor qualidade + legendas em inglês
 
 ### Áudio
-- **Áudio MP3**: Extração de áudio em formato MP3
+- **Áudio MP3**: Extração e conversão de áudio para MP3
 
 ### Playlist
 - **Playlist Completa (Vídeo)**: Baixa todos os vídeos de uma playlist
 - **Playlist Completa (Áudio)**: Baixa todo o áudio de uma playlist em MP3
 
-## Requisitos
+## 🔧 Requisitos
 
 - macOS 10.15 ou superior
 - Homebrew (gerenciador de pacotes)
@@ -35,9 +41,24 @@ Sistema completo para download de vídeos do YouTube com interface gráfica para
 - yt-dlp
 - ffmpeg
 
-## Instalação
+## 🚀 Instalação Rápida
 
-### 1. Instalar Dependências
+### Instalação Automática (Recomendado)
+
+```bash
+cd ~/Documents/projetos/yt-dlp-script
+./install-desktop-app.sh
+```
+
+Este script irá:
+- ✅ Verificar e instalar Homebrew (se necessário)
+- ✅ Instalar yt-dlp e ffmpeg
+- ✅ Criar o aplicativo desktop
+- ✅ Testar toda a instalação
+
+### Instalação Manual
+
+#### 1. Instalar Dependências
 
 ```bash
 # Instalar Homebrew (se ainda não tiver)
@@ -46,19 +67,25 @@ Sistema completo para download de vídeos do YouTube com interface gráfica para
 # Instalar yt-dlp e ffmpeg
 brew install yt-dlp ffmpeg
 
-# Instalar Python (se necessário)
-brew install python@3.11
+# Python 3 já vem no macOS
+python3 --version
 ```
 
-### 2. Clonar o Repositório
+#### 2. Clonar o Repositório
 
 ```bash
 cd ~/Documents/projetos
-git clone https://github.com/seu-usuario/yt-dlp-downloader-app.git
-cd yt-dlp-downloader-app
+git clone https://github.com/seu-usuario/yt-dlp-script.git
+cd yt-dlp-script
 ```
 
-### 3. Configurar Ambiente Python (para CLI interativo)
+#### 3. Criar o App Desktop
+
+```bash
+./create-desktop-app.sh
+```
+
+#### 4. (Opcional) Configurar CLI Interativo
 
 ```bash
 # Criar ambiente virtual
@@ -71,14 +98,45 @@ source venv/bin/activate
 pip install inquirer rich
 ```
 
-## Uso
+## 📱 Como Usar
 
-### App para Dock/Desktop
+### 🖥️ App Desktop Moderno (Recomendado)
+
+#### Abrir o App
+
+```bash
+# Pelo Finder
+open ~/Applications/YT-DLP\ Desktop.app
+
+# Ou adicione ao Dock para acesso rápido
+```
+
+#### Como Usar
+
+1. **Cole a URL** do vídeo (botão "Colar" ou Cmd+V)
+2. **Escolha o formato**:
+   - Vídeo (Melhor, 720p, 480p)
+   - Áudio MP3
+   - Vídeo com Legendas
+   - Playlist Completa (Vídeo/Áudio)
+3. **Configure opções avançadas** (se necessário):
+   - Ignorar erros em playlist
+   - Usar cookies do Chrome (para Vimeo)
+4. **Clique em "Baixar"**
+5. **Acompanhe o progresso** no log em tempo real
+
+**📖 Documentação completa**: [DESKTOP_APP_GUIDE.md](DESKTOP_APP_GUIDE.md)
+
+---
+
+### 🎯 App para Dock/Desktop (Download Rápido)
+
+**YT-DLP Downloader** é um app simples e rápido para downloads direto do Dock.
 
 #### Criar o App
 
 ```bash
-cd ~/Documents/projetos/yt-dlp-downloader-app
+cd ~/Documents/projetos/yt-dlp-script
 ./create-dock-app.sh
 ```
 
@@ -86,136 +144,137 @@ O script criará o app em `~/Applications/YT-DLP Downloader.app`.
 
 #### Usar o App
 
-1. **Copie** a URL do vídeo do YouTube (Cmd+C)
-2. **Clique** no ícone "YT-DLP Downloader" no Desktop ou Dock
-3. **Escolha** o formato desejado no diálogo
+1. **Copie** a URL do vídeo (Cmd+C)
+2. **Clique** no ícone "YT-DLP Downloader"
+3. **Escolha** o formato no diálogo
 4. **Aguarde** a notificação de conclusão
 5. **Acesse** a pasta Downloads (abre automaticamente)
 
 #### Adicionar ao Dock
 
 1. Abra o Finder em `~/Applications/`
-2. Arraste "YT-DLP Downloader.app" para o Dock
+2. Arraste o app para o Dock
 3. Pronto!
 
-### CLI Interativo (ytdl.py)
+---
+
+### 💻 CLI Interativo (ytdl.py)
+
+Interface de linha de comando com menus interativos e opções avançadas.
+
+#### Configurar
 
 ```bash
-cd ~/Documents/projetos/yt-dlp-downloader-app
+cd ~/Documents/projetos/yt-dlp-script
+
+# Criar ambiente virtual
+python3 -m venv venv
+
+# Ativar ambiente virtual
+source venv/bin/activate
+
+# Instalar dependências
+pip install inquirer rich
+```
+
+#### Usar
+
+```bash
 source venv/bin/activate
 python3 ytdl.py
 ```
 
-O CLI oferece:
+**Recursos:**
 - Download rápido com presets
 - Download avançado com opções personalizadas
-- Configuração do diretório de download
-- Visualização de todos os presets disponíveis
+- Configuração de diretório de download
+- Listagem de playlists
+- Seleção de itens específicos em playlists
 
-### Uso Manual (Scripts Shell)
+---
 
-#### Download rápido via script
+### ⚡ Scripts de Terminal Rápido
+
+Para uso direto no terminal sem interface:
 
 ```bash
-# Copie a URL primeiro, depois execute:
+# Download rápido
 ./ytdl-quick.sh
+
+# GUI simples com AppleScript
+./ytdl-gui-simple.sh
+
+# GUI alternativa
+./quick-download-gui.sh
 ```
 
-#### Comandos diretos com yt-dlp
+## 🎨 Comparação de Interfaces
+
+| Interface | Tipo | Melhor Para | Complexidade |
+|-----------|------|-------------|--------------|
+| **YT-DLP Desktop** | GUI Tkinter | Uso regular, visualizar progresso | Média |
+| **YT-DLP Downloader** | App Dock | Downloads rápidos, produtividade | Baixa |
+| **ytdl.py** | CLI Interativo | Controle total, opções avançadas | Média |
+| **ytdl-quick.sh** | Terminal | Automação, scripts | Baixa |
+| **ytdl-gui-simple.sh** | AppleScript | Alternativa GUI nativa | Baixa |
+
+Escolha a interface que melhor se adapta ao seu fluxo de trabalho!
+
+## 📂 Estrutura do Projeto
+
+```
+yt-dlp-script/
+├── ytdl.py                      # CLI interativo principal
+├── ytdl_gui.py                  # GUI Tkinter
+├── ytdl-quick.sh               # Script de download rápido
+├── ytdl-gui-simple.sh          # GUI AppleScript
+├── quick-download-gui.sh       # GUI alternativa
+├── create-desktop-app.sh       # Cria app desktop
+├── create-dock-app.sh          # Cria app para Dock
+├── install-desktop-app.sh      # Instalação completa
+├── setup.sh                    # Setup de dependências
+├── test-installation.sh        # Testa instalação
+├── README.md                   # Este arquivo
+├── DESKTOP_APP_GUIDE.md        # Guia completo do app desktop
+├── RESUMO_FINAL.md            # Status e correções
+└── venv/                       # Ambiente virtual Python
+```
+
+## 🛠️ Funcionalidades Avançadas
+
+### Suporte para Vimeo
+
+Para downloads do Vimeo, use cookies do navegador:
 
 ```bash
-# Vídeo 720p (menor)
-yt-dlp -f 'bv*[height<=720][ext=mp4]+ba[ext=m4a]/bv*[height<=720]+ba' \
-  --merge-output-format mp4 --recode-video mp4 URL
-
-# Vídeo 480p (muito menor)
-yt-dlp -f 'bv*[height<=480][ext=mp4]+ba[ext=m4a]/bv*[height<=480]+ba' \
-  --merge-output-format mp4 --recode-video mp4 URL
-
-# Áudio MP3
-yt-dlp -x --audio-format mp3 URL
-
-# Playlist completa (vídeo)
-yt-dlp --yes-playlist -f 'bv*[vcodec^=avc]+ba[acodec^=mp4a]/bv*+ba/b' \
-  --merge-output-format mp4 URL
-
-# Com legendas
-yt-dlp --write-srt --sub-lang en URL
+# No app desktop: marque "Usar cookies do Chrome"
+# No terminal:
+yt-dlp --cookies-from-browser chrome "URL_DO_VIMEO"
 ```
 
-## Estrutura do Projeto
+### Download de Playlists
 
-```
-yt-dlp-downloader-app/
-├── README.md                          # Documentação
-├── exemplox.txt                       # Exemplos de uso do yt-dlp
-├── ytdl.py                           # CLI interativo em Python
-├── ytdl-quick.sh                     # Script principal (usado pelo app)
-├── ytdl-quick-v2.sh                  # Versão alternativa
-├── create-dock-app.sh                # Cria app para Dock/Desktop
-├── create-workflows.sh               # Cria Quick Actions do macOS
-├── quick-download.sh                 # Script de download rápido
-├── quick-download-gui.sh             # Versão GUI
-├── setup.sh                          # Setup inicial
-├── test-installation.sh              # Testa instalação
-├── install-quick-actions-manual.sh   # Instalação manual de Quick Actions
-└── venv/                             # Ambiente virtual Python
-```
+Todas as interfaces suportam playlists:
+- Download completo (todos os vídeos)
+- Ignorar erros (pular vídeos privados/removidos)
+- Seleção de itens específicos (apenas CLI)
 
-## Detalhes Técnicos
+### Formatos de Saída
 
-### Formatos de Vídeo
+Todos os vídeos são convertidos para MP4 (H.264 + AAC) usando:
+- `--merge-output-format mp4`: Combina melhor vídeo + melhor áudio
+- `--recode-video mp4`: Recodifica para garantir compatibilidade
+- `--ffmpeg-location`: Usa FFmpeg para conversão
 
-Os vídeos são baixados com as seguintes especificações:
+### Legendas
 
-| Formato | Resolução | Codec Vídeo | Codec Áudio | Tamanho Aproximado* |
-|---------|-----------|-------------|-------------|---------------------|
-| Melhor  | Variável  | H.264 (AVC) | AAC         | 100% (referência)   |
-| 720p    | 1280x720  | H.264 (AVC) | AAC         | 60-70% do melhor    |
-| 480p    | 854x480   | H.264 (AVC) | AAC         | 30-40% do melhor    |
+Suporte para:
+- Legendas enviadas pelos criadores
+- Legendas automáticas (auto-generated)
+- Múltiplos idiomas
+- Formato SRT
 
-*Tamanhos variam conforme a complexidade do vídeo
-
-### Compatibilidade de Codecs
-
-Todos os vídeos são baixados ou convertidos para:
-- **Vídeo**: H.264 (AVC) - Compatível com QuickTime, iOS, WhatsApp
-- **Áudio**: AAC - Padrão universal
-- **Container**: MP4 - Máxima compatibilidade
-
-### Como Funciona
-
-1. **yt-dlp** baixa os melhores streams de vídeo e áudio separadamente
-2. **ffmpeg** mescla (merge) os streams em um único arquivo MP4
-3. O formato H.264 + AAC garante compatibilidade universal
-4. `--recode-video mp4` força conversão se necessário
-
-## Quick Actions do macOS
-
-Para instalar as Quick Actions do macOS e poder baixar vídeos com clique direito:
-
-```bash
-./create-workflows.sh
-```
-
-Isso criará 4 Quick Actions:
-
-1. **YT-DLP Download** - Abre diálogo com opções (Recomendado)
-2. **YT-DLP Baixar Vídeo** - Download direto de vídeo
-3. **YT-DLP Baixar Áudio MP3** - Download direto de áudio
-4. **YT-DLP Baixar Playlist** - Download direto de playlist
-
-### Como usar Quick Actions:
-
-1. **Copie a URL** do vídeo (Cmd + C)
-2. **Acesse o menu de 3 formas:**
-   - Menu do App → Serviços → YT-DLP...
-   - Botão direito (em qualquer lugar) → Serviços → YT-DLP...
-   - Configure atalho de teclado em: Preferências → Teclado → Atalhos → Serviços
-3. O download inicia automaticamente na pasta ~/Downloads
-4. Uma notificação aparece quando concluir
-
-## Solução de Problemas
+## 🔍 Solução de Problemas
 
 ### "yt-dlp não encontrado"
 
@@ -231,108 +290,120 @@ pip install yt-dlp
 brew install ffmpeg
 ```
 
-### Vídeos não mesclam (arquivos .f*.mp4 separados)
+### App não abre no macOS
 
-O script `ytdl-quick.sh` inclui fallback automático para mesclar manualmente com ffmpeg.
+1. Vá em **Preferências do Sistema** → **Segurança e Privacidade**
+2. Clique em **"Abrir Assim Mesmo"**
 
-### Erro de permissão ao executar scripts
+### Erro com Vimeo
+
+1. Certifique-se de estar logado no Vimeo pelo Chrome
+2. Marque "Usar cookies do Chrome" nas opções
+3. Ou tente usar cookies do Safari (padrão)
+
+### Download de MP3 falha
+
+Certifique-se de que FFmpeg está instalado:
 
 ```bash
-chmod +x *.sh
+brew install ffmpeg
 ```
 
-### App não aparece no Dock
+### Playlist não baixa tudo
 
-1. Verifique em `~/Applications/YT-DLP Downloader.app`
-2. Execute novamente `./create-dock-app.sh`
-3. Arraste manualmente para o Dock
+- Marque "Ignorar erros em playlist"
+- Alguns vídeos podem ser privados ou removidos
+- Verifique os logs para detalhes
 
-### Vídeo não abre no QuickTime
+### Permissões no macOS
 
-Certifique-se de usar os formatos atualizados que incluem:
-- `[ext=mp4]` e `[ext=m4a]` nos filtros
-- `--recode-video mp4` para conversão
+Se o terminal solicitar permissões:
 
-## Atualizando yt-dlp
+1. **Preferências do Sistema** → **Segurança e Privacidade** → **Privacidade**
+2. Adicione o Terminal em **Acesso Total ao Disco** (se necessário)
+
+## 📊 Tamanhos de Arquivo
+
+| Formato | Resolução | Tamanho (10 min vídeo) | Uso Recomendado |
+|---------|-----------|----------------------|-----------------|
+| Melhor | 1080p-4K | ~200-500 MB | Arquivamento, máxima qualidade |
+| 720p | 1280x720 | ~100-200 MB | Equilíbrio qualidade/tamanho |
+| 480p | 854x480 | ~50-100 MB | Economia de espaço, mobile |
+| MP3 | N/A | ~10-20 MB | Apenas áudio, música |
+
+## 🔄 Atualização
+
+Para atualizar o yt-dlp:
 
 ```bash
-# Via Homebrew
 brew upgrade yt-dlp
-
-# Via pip
-pip install -U yt-dlp
-
-# Comando direto
-yt-dlp -U
 ```
 
-## Configuração Avançada
-
-### Personalizar Diretório de Download
-
-Edite a variável `DOWNLOAD_DIR` nos scripts:
+Para atualizar o projeto:
 
 ```bash
-# Em ytdl-quick.sh
-DOWNLOAD_DIR="$HOME/Downloads"  # Altere para seu diretório preferido
+cd ~/Documents/projetos/yt-dlp-script
+git pull
 ```
 
-### Adicionar Novos Formatos
+## 🤝 Contribuindo
 
-Edite os arrays `choices` e os blocos `case` nos scripts:
+Contribuições são bem-vindas! Por favor:
 
-```bash
-# ytdl-quick.sh (linha 15)
-set choices to {"Seu Novo Formato", ...}
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-# Adicione o case correspondente (linha 39+)
-"Seu Novo Formato")
-    yt-dlp [suas opções] "$URL"
-    ;;
-```
+## 📝 Changelog
 
-### Modificar Nomenclatura de Arquivos
+### v2.0 (2025-11-06)
 
-Use a opção `-o` do yt-dlp:
+- ✨ Interface gráfica moderna com Tkinter
+- 🎨 Design nativo do macOS
+- 📊 Log em tempo real
+- ⚙️ Opções avançadas integradas
+- 🔧 Correções para playlists e Vimeo
+- 📱 Suporte melhorado para múltiplos sites
+- ✅ Correção completa do download de MP3
+- 🎯 Melhoria nos formatos de vídeo
 
-```bash
-# Formato atual
--o "%(title)s [%(id)s].%(ext)s"
+### v1.0 (2025-10-28)
 
-# Apenas ID
--o "%(id)s.%(ext)s"
+- 🚀 Release inicial
+- 📦 App para Dock
+- 💻 CLI interativo
+- ⚡ Scripts de terminal
 
-# Data + título
--o "%(upload_date)s - %(title)s.%(ext)s"
-```
-
-## Recursos Úteis
-
-- [Documentação oficial do yt-dlp](https://github.com/yt-dlp/yt-dlp)
-- [Format Selection no yt-dlp](https://github.com/yt-dlp/yt-dlp#format-selection)
-- [Documentação do ffmpeg](https://ffmpeg.org/documentation.html)
-
-## Contribuindo
-
-Contribuições são bem-vindas! Sinta-se à vontade para:
-
-1. Fazer fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/NovaFeature`)
-3. Commit suas mudanças (`git commit -m 'Adiciona NovaFeature'`)
-4. Push para a branch (`git push origin feature/NovaFeature`)
-5. Abrir um Pull Request
-
-## Licença
+## 📄 Licença
 
 Este projeto é de código aberto e está disponível sob a [Licença MIT](LICENSE).
 
-## Changelog
+## 🔗 Links Úteis
 
-### v1.0.0 (2025-10-28)
-- Release inicial
-- App para Dock/Desktop
-- CLI interativo com inquirer e rich
-- Suporte para múltiplos formatos (720p, 480p)
-- Compatibilidade total com QuickTime e WhatsApp
-- Merge automático de vídeo e áudio
-- Suporte para playlists e legendas
+- **yt-dlp**: [github.com/yt-dlp/yt-dlp](https://github.com/yt-dlp/yt-dlp)
+- **FFmpeg**: [ffmpeg.org](https://ffmpeg.org/)
+- **Homebrew**: [brew.sh](https://brew.sh/)
+- **Documentação do App**: [DESKTOP_APP_GUIDE.md](DESKTOP_APP_GUIDE.md)
+
+## 💡 Dicas de Uso
+
+1. **Para downloads rápidos**: Use o app do Dock
+2. **Para opções avançadas**: Use o CLI interativo
+3. **Para acompanhar progresso**: Use o app desktop com GUI
+4. **Para Vimeo**: Sempre use cookies do navegador
+5. **Para playlists grandes**: Marque "ignorar erros"
+6. **Para economizar espaço**: Use formato 480p ou MP3
+
+## ⚠️ Aviso Legal
+
+Este software é fornecido apenas para uso pessoal. Respeite os direitos autorais e os termos de serviço dos sites de onde você baixa conteúdo. O autor não se responsabiliza pelo uso indevido desta ferramenta.
+
+---
+
+**Desenvolvido com ❤️ para a comunidade macOS**
+
+**Versão:** 2.0
+**Status:** ✅ Pronto para produção
+**Última atualização:** 06/11/2025
