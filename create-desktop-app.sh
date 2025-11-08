@@ -82,15 +82,16 @@ cat > "$CONTENTS_DIR/Info.plist" << EOF
 </plist>
 EOF
 
-# Cria ícone (usando sips para converter uma imagem do sistema)
-echo "🎨 Criando ícone..."
-# Usa o ícone padrão de download do sistema
-ICON_SOURCE="/System/Library/CoreServices/CoreTypes.bundle/Contents/Resources/ToolbarDownloadsFolderIcon.icns"
-if [ -f "$ICON_SOURCE" ]; then
-    cp "$ICON_SOURCE" "$RESOURCES_DIR/AppIcon.icns"
+# Cria ícone a partir do icon.png do projeto
+echo "🎨 Criando ícone personalizado..."
+CUSTOM_ICON_SOURCE="$SCRIPT_DIR/icon.png"
+if [ -f "$CUSTOM_ICON_SOURCE" ]; then
+    # Converte o ícone e verifica se houve erro
+    if ! sips -s format icns "$CUSTOM_ICON_SOURCE" --out "$RESOURCES_DIR/AppIcon.icns" >/dev/null 2>&1; then
+        echo "⚠️  Falha ao criar o ícone personalizado. Verifique se o arquivo icon.png é uma imagem válida."
+    fi
 else
-    # Fallback: cria ícone básico
-    echo "⚠️  Ícone padrão não encontrado, usando fallback"
+    echo "⚠️  Arquivo icon.png não encontrado no diretório do projeto. O ícone padrão será usado."
 fi
 
 # Torna o aplicativo executável
